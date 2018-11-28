@@ -25,10 +25,10 @@ class SearchPlugin(plugin.Plugin):
     capabilities = ['terminal_menu']
 
     def do_search(self, searchMenu):
-        """Launch Google search for string"""
+        """Launch Duckduckgo search for string"""
         if not self.searchstring:
             return
-        base_uri = "https://www.google.com/search?q=%s"
+        base_uri = "https://www.duckduckgo.com/?q=%s"
         uri = base_uri % urllib.quote(self.searchstring.encode("utf-8"))
         gtk.show_uri(None, uri, Gdk.CURRENT_TIME)
         
@@ -50,10 +50,10 @@ class SearchPlugin(plugin.Plugin):
                 displaystring = self.searchstring[:37] + "..."
             else:
                 displaystring = self.searchstring
-            item.set_label("Search Google for \"%s\"" % displaystring)
+            item.set_label("Search DuckDuckgo for \"%s\"" % displaystring)
             item.set_sensitive(True)
         else:
-            item.set_label("Search Google")
+            item.set_label("Search DuckDuckGo")
             item.set_sensitive(False)
         # Avoid turning any underscores in selection into menu accelerators
         item.set_use_underline(False)
